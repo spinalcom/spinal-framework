@@ -1,4 +1,4 @@
-# SpinalCom Framework
+# SpinalCore Framework
 
 A simple, lightweight file to create SpinalCore systems.
 This contains a single Makefile that has two goals:
@@ -21,7 +21,7 @@ Change the name of the root folder "spinal-framework" to your system name.
 
 Put your Spinalhub executable (spinalhub_x64_vX.X) downloaded on www.spinalcom.com in the folder.
 
-At this moment, you have two options: installing the basic framework, and installing the same framework with the is-sim library.
+At this moment, you have two options: installing the basic framework, and installing the same framework and include the is-sim library.
 
 To install the basic framework:
 ```bash
