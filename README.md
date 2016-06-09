@@ -25,15 +25,15 @@ At this moment, you have two options: installing the basic framework, and instal
 
 To install the basic framework:
 ```bash
-~/path/to/your-system$ make install-basic
-```
-To install the framework containing the is-sim library:
-```bash
-~/path/to/your-system$ make install-issim
+~/path/to/your-system$ make install
 ```
 Or just:
 ```bash
 ~/path/to/your-system$ make
+```
+To install the framework containing the is-sim library:
+```bash
+~/path/to/your-system$ make install-issim
 ```
 
 ## Run

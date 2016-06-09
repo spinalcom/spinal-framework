@@ -10,10 +10,12 @@ MONITOR_PORT = 8889
 SHELL = /bin/bash
 
 
-all: install-issim
+all: install
 
 
 #============================= INSTALLING ================================
+install: install-basic
+
 install-basic:
 	# nerve-center
 	mkdir -p ./nerve-center 
