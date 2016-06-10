@@ -29,9 +29,6 @@ install-basic:
 	cd ./browser-organ/; ln -sf ../models-manager/
 	mkdir -p ./browser-organ/libJS
 	cd ./browser-organ/libJS/; test -e ./spinalcore.browser.js || wget http://resources.spinalcom.com/spinalcore.browser.js;
-	# cpp-libraries
-	mkdir -p cpp-libraries
-	cd ./cpp-libraries/; test -e ./SpinalCoreQT.zip || wget http://resources.spinalcom.com/SpinalCoreQT.zip;
 	@echo -e "\nFramework installation succeeded!\n"
 
 install-issim: install-basic
