@@ -1,7 +1,7 @@
 
 #======== HUB CONFIG =========
 HUB = spinalhub
-WEB = browser-organ/
+WEB = browser-organs/
 JS_PORT = 8888
 CPP_PORT = 8890
 MONITOR_PORT = 8889
@@ -24,20 +24,20 @@ install-basic:
 	mkdir -p ./models-manager
 	mkdir -p ./models-manager/models
 	cd ./models-manager/models; test -e concat-js || ( echo > concat-js; echo -e "#!/bin/bash\nfor dir in \044(find * -type d); do tmp=\"\"; cat \044{dir}/*.js >> tmp; mv tmp \044{dir}.js; done" > concat-js; chmod +x concat-js; )
-	# browser-organ
-	mkdir -p ./browser-organ
-	cd ./browser-organ/; ln -sf ../models-manager/
-	mkdir -p ./browser-organ/libJS
-	cd ./browser-organ/libJS/; test -e ./spinalcore.browser.js || wget http://resources.spinalcom.com/spinalcore.browser.js;
+	# browser-organs
+	mkdir -p ./browser-organs
+	cd ./browser-organs/; ln -sf ../models-manager/
+	mkdir -p ./browser-organs/libJS
+	cd ./browser-organs/libJS/; test -e ./spinalcore.browser.js || wget http://resources.spinalcom.com/spinalcore.browser.js;
 	@echo -e "\nFramework installation succeeded!\n"
 
 install-issim: install-basic
 	# models-manager
 	test -e ./models-manager/is-sim/ && ( cd models-manager/is-sim/; git pull origin dev; make; ) || ( cd models-manager/; git clone git@github.com:spinalcom/is-sim.git; cd ./is-sim; git pull origin dev; make; );
 	cd ./models-manager; test -e ./is-sim.config.js || ( echo > is-sim.config.js; echo -e "var MODELS = [];\nvar APPLIS = [];\nvar LIBS = [];" > is-sim.config.js; )
-	# browser-organ
-	test -e ./browser-organ/libJS/jquery-2.2.4.min.js || ( cd ./browser-organ/libJS/; wget https://code.jquery.com/jquery-2.2.4.min.js );
-	test -e ./browser-organ/libJS/js.cookie.js || ( cd ./browser-organ/libJS/; wget https://raw.githubusercontent.com/js-cookie/js-cookie/v2.1.1/src/js.cookie.js );
+	# browser-organs
+	test -e ./browser-organs/libJS/jquery-2.2.4.min.js || ( cd ./browser-organs/libJS/; wget https://code.jquery.com/jquery-2.2.4.min.js );
+	test -e ./browser-organs/libJS/js.cookie.js || ( cd ./browser-organs/libJS/; wget https://raw.githubusercontent.com/js-cookie/js-cookie/v2.1.1/src/js.cookie.js );
 	@echo -e "\nis-sim installation succeeded!\n"
 
 
