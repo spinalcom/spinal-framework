@@ -42,13 +42,10 @@ install-issim: install-basic
 
 
 #=============================== RUNNING =================================
-run: run-basic
-
-run-basic:
+run: 
 	@cd nerve-center; ps ax | grep -v grep | grep -v grep | grep "./${HUB} -b ../${WEB} -p ${JS_PORT} -P ${MONITOR_PORT} -q ${CPP_PORT}" > /dev/null && ( echo -e "\nYour hub is already running!\n" ) || (./${HUB} -b ../${WEB} -p ${JS_PORT} -P ${MONITOR_PORT} -q ${CPP_PORT} & )
 
-run-with_organsmanager: run-basic
-	@sleep 1;
+run-organs-manager:
 	@ps ax | grep -v grep | grep -v grep | grep "./${HUB} -b ../${WEB} -p ${JS_PORT} -P ${MONITOR_PORT} -q ${CPP_PORT}" > /dev/null && ( test -e ./organs-manager/run && ( cd ./organs-manager;  echo -e "Your organs manager is now running...\n"; ./run & ) || ( echo -e "There is no organs manager executable!\n" ) ) || ( make run_with_organsmanager )
 
 
