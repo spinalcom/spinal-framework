@@ -33,7 +33,7 @@ install-basic:
 
 install-issim: install-basic
 	# models-manager
-	test -e ./models-manager/is-sim/ && ( cd models-manager/is-sim/; git pull; make; ) || ( cd models-manager/; git clone git@github.com:spinalcom/is-sim.git; cd ./is-sim; make; );
+	test -e ./models-manager/is-sim/ && ( cd models-manager/is-sim/; git pull; make; ) || ( cd models-manager/; git clone https://github.com/spinalcom/is-sim.git; cd ./is-sim; make; );
 	cd ./models-manager; test -e ./is-sim.config.js || ( echo > is-sim.config.js; echo -e "var MODELS = [];\nvar APPLIS = [];\nvar LIBS = [];" > is-sim.config.js; )
 	# browser-organs
 	test -e ./browser-organs/libJS/jquery-2.2.4.min.js || ( cd ./browser-organs/libJS/; wget https://code.jquery.com/jquery-2.2.4.min.js );
