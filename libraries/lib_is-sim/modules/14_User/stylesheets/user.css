@@ -1,0 +1,94 @@
+/*
+ Copyright 2015 SpinalCom  www.spinalcom.com
+ Copyright 2014 Jeremie Bellec
+
+ This file is part of SpinalCore.
+
+ Soda is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ SpinalCore is distributed in the hope that it will be useful,
+
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Lesser General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with SpinalCore. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
+.LoginBackground {
+    background : transparent url( 'img/login.png' ) center center no-repeat ;
+    margin-left: auto;
+    margin-right: auto;
+    height : 700px;
+    width: 800px ; /* largeur obligatoire pour être centré */ 
+    //border : 1px solid grey;
+    //float : left;
+}
+
+.logo {
+    background : transparent url( 'img/logo_issim_test.png' ) left center no-repeat ;
+    margin-left: 5px;
+    height : 30px;
+    width: 200px ; /* largeur obligatoire pour être centré */ 
+    float : left;
+}
+
+.logout_div{
+    background : transparent url( 'img/logout.png' ) center center no-repeat ;
+    margin-left: 20px;
+    margin-right: 5px;
+    height : 30px;
+    width: 30px ; /* largeur obligatoire pour être centré */ 
+    float : right;
+    cursor : pointer;
+}
+
+.user_icon_div{
+    background : transparent url( 'img/user_icon_30.png' ) left center no-repeat ;
+    margin-left: 20px;
+    margin-right: 0px;
+    height : 30px;
+    float : right;
+    cursor : pointer;
+}
+
+.organisation_icon_div{
+    background : transparent url( 'img/organisation_icon_30.png' ) left center no-repeat ;
+    margin-left: 20px;
+    margin-right: 0px;
+    height : 30px;
+    float : right;
+    cursor : pointer;
+}
+
+.edit_user_container{
+    background : transparent url( 'img/user_icon.png' ) left top no-repeat ;
+    float : left;
+}
+
+.user_line {
+  -moz-border-radius: 5;
+  -webkit-border-radius: 5;
+  -o-border-radius: 5;
+  border-radius: 5;
+  border-width: 0; margin: 0; padding: 0; background: transparent;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 0; margin: 0;
+  white-space: pre;
+  word-wrap: normal;
+}
+
+.line_user_container{
+    background: url('img/user_icon_25.png') left center no-repeat;
+}
+
+.Loading {
+    background : transparent url( 'img/ajax-loader.gif' ) center center no-repeat ;
+    width: 100%;
+    height: 40px;
+}

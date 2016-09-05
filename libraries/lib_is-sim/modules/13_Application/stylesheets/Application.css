@@ -1,0 +1,119 @@
+/*
+ Copyright 2012 Structure Computation  www.structure-computation.com
+ Copyright 2012 Hugo Leclerc
+
+ This file is part of Soda.
+
+ Soda is free software: you can redistribute it and/or modify
+ it under the terms of the GNU Lesser General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ Soda is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ GNU Lesser General Public License for more details.
+ You should have received a copy of the GNU General Public License
+ along with Soda. If not, see <http://www.gnu.org/licenses/>.
+*/
+
+.apps_container{
+    //height:     300px;
+    width:      100%;
+}
+
+.app_icon{
+    height:     75px;
+    width:      150px;
+    float:      left;
+    margin:     0px 0px 0px 0px ;
+    //border:     thin solid grey;
+    -moz-border-radius   : 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius     : 5px;
+    border-radius        : 5px;
+}
+.app_icon:hover {
+    background: #c6c6c6; /*lightBlue;*/
+    cursor:pointer;
+}
+
+.app_picture{
+    margin:     0px 0px 0px 0px ;
+    padding:    0px 0px 0px 0px ;
+}
+
+.app_group{
+    height:     200px;
+    width:      150px;
+    float:      left;
+    margin:     5px 5px 5px 5px ;
+    //background: #c6c6c6;
+    border:     thin solid #262626;
+    -moz-border-radius   : 5px;
+    -webkit-border-radius: 5px;
+    -o-border-radius     : 5px;
+    border-radius        : 5px;
+}
+
+.app_group_text{
+    width:      140px;
+    height:     50px;
+    float:      left;
+    margin:     5px 0px 0px 5px ;
+    border:     none;
+    color :     #262626;
+}
+
+.app_group_title{
+    text-align: center;
+    width:      120px;
+    float:      left;
+    margin:     0px 0px 0px 0px ;
+    padding:    20px 15px 20px 15px ;
+    border:     none;
+    //color :     #262626;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.app_group_name{
+    width:      100%;
+    float:      left;
+    margin:     2px 0px 0px 0px ;
+    border:     none;
+    text-align: center;
+    //color :     #262626;
+}
+
+.app_group_link{
+    width:      140px;
+    height:     32px;
+    float:      left;
+    margin:     0px 0px 0px 5px ;
+    border:     none;
+    text-align: center;
+    //color :     #262626;
+}
+
+
+.app_group_publication_link{
+    width:      32px;
+    height:     32px;
+    margin:     0px 3px 0px 3px ;
+    border:     none;
+    float:      left;
+    background-image     : url('img/LinkTo_32.png');
+    background-position  : center;
+}
+
+
+.app_group_tutorial_link{
+    width:      32px;
+    height:     32px;
+    margin:     0px 3px 0px 3px ;
+    border:     none;
+    float:      left;
+    background-image     : url('img/youtube_32.png');
+    background-position  : center;
+}

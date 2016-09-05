@@ -1,0 +1,29 @@
+<html>
+  <head> 
+    <title>is'sim Organisation</title> 
+    <link rel="icon" type="image/png" href="favicone.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>     
+
+    <!-- is-sim css -->
+    <link type="text/css" href="models-manager/is-sim/is-sim.stylesheets.css" rel="stylesheet"/>
+    
+    <!-- spinalcore browser js -->
+    <script type="text/javascript" src="libJS/spinalcore.browser.js"></script>
+
+    <!-- is-sim js -->    
+    <script type="text/javascript" src="models-manager/is-sim/is-sim.models.js"></script>
+    <script type="text/javascript" src="models-manager/is-sim/is-sim.views.js"></script>
+    <script type="text/javascript" src="models-manager/is-sim.config.js"></script>
+
+    <!-- libJS js -->
+    <script src="libJS/jquery-2.2.4.min.js"></script>
+    <script src="libJS/js.cookie.js"></script>
+    <script> for (var file of LIBS){ document.write("<scr"+"ipt type=\"text/javascript\" src=\"libJS/" + file + ".js\"></scr"+"ipt>"); } </script>
+
+    <!-- models -->
+    <script> for (var file of MODELS){ document.write("<scr"+"ipt type=\"text/javascript\" src=\"models-manager/models/" + file + ".js\"></scr"+"ipt>"); } </script>
+    
+  <body onload="launch_organisation();">
+  </body> 
+</html>
+
