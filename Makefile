@@ -36,12 +36,12 @@ global-processes:
 	done
 
 clean:
-	rm all.processes.js all.models.js;
+	rm -f all.processes.js all.models.js;
 	for dir in $$(SUBDIRS); do \
 		$$(MAKE) -C $$$$dir clean; \
 	done
 
-.PHONY: global global-processes global-models $$(SUBDIRS)
+.PHONY: global global-processes global-models $$(SUBDIRS) clean
 endef
 
 export LIB_MAKEFILE_TXT
