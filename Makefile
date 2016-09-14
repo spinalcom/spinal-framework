@@ -37,7 +37,9 @@ global-processes:
 
 clean:
 	rm all.processes.js all.models.js;
-	$$(MAKE) clean -C $$(SUBDIRS)
+	for dir in $$(SUBDIRS); do \
+		$$(MAKE) -C $$$$dir clean; \
+	done
 
 .PHONY: global global-processes global-models $$(SUBDIRS)
 endef
@@ -71,6 +73,7 @@ install-basic:
 
 install-issim: install-basic
 	# models-manager
+  #TODO -> UPDATE IS-SIM REPO!
 	#test -e ./models-manager/is-sim/ && ( cd models-manager/is-sim/; git pull; make; ) || ( cd models-manager/; git clone https://github.com/spinalcom/is-sim.git; cd ./is-sim; make; );
 	cd ./libraries; test -e ./is-sim.config.js || ( echo > is-sim.config.js; echo -e "var MODELS = [];\nvar APPLIS = [];\nvar LIBS = [];" > is-sim.config.js; )
 	# browser-organs
