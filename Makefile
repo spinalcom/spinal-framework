@@ -99,7 +99,7 @@ all:
 install: 
 	@echo -e "\n Write your own installation process here ! \n"
 
-create:
+init:
 	# nerve-center
 	mkdir -p ./nerve-center 
 	#test -e spinalhub* && ( chmod +x spinalhub*; mv spinalhub* ./nerve-center/spinalhub ) || ( test -e ./nerve-center/spinalhub || ( echo -e "\nPlease put a spinalhub executable in this folder.\n"; false; ) )
