@@ -102,7 +102,6 @@ install:
 init:
 	# nerve-center
 	mkdir -p ./nerve-center 
-	#test -e spinalhub* && ( chmod +x spinalhub*; mv spinalhub* ./nerve-center/spinalhub ) || ( test -e ./nerve-center/spinalhub || ( echo -e "\nPlease put a spinalhub executable in this folder.\n"; false; ) )
 	
 	# js-libraries folder
 	mkdir -p ./js-libraries
@@ -152,6 +151,17 @@ install-utility_admin:
 
 clean:
 	@cd ./js-libraries; make clean; cd ../organs/; make clean;
+
+	
+#============================== NEW ORGANS ===============================
+neworgan.node:
+	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-node.git; cd neworgan-node/; make update; cd ../; if [[ $${NAME} ]]; then mv neworgan-node $${NAME}; fi 
+
+neworgan.qt:
+	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-qt.git; cd neworgan-qt/; wget http://resources.spinalcom.com/SpinalCoreQT.zip; unzip ./SpinalCoreQT.zip -d ./SpinalCoreQT; rm -r SpinalCoreQT.zip; cd ../; if [[ $${NAME} ]]; then mv neworgan-qt $${NAME}; fi 
+
+neworgan.nwjs:
+	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-nwjs.git; cd neworgan-nwjs/; make update; cd ../; if [[ $${NAME} ]]; then mv neworgan-nwjs $${NAME}; fi
 
 #=============================== RUNNING =================================
 run: hub.run organs.run
