@@ -105,7 +105,6 @@ init:
 	
 	# js-libraries folder
 	mkdir -p ./js-libraries
-	mkdir -p ./js-libraries/custom_lib
 	@echo ${JS_LIB_MAKEFILE} > ./js-libraries/Makefile
 	
 	# cpp-libraries folder
