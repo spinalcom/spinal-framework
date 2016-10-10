@@ -109,7 +109,6 @@ init:
 	
 	# cpp-libraries folder
 	mkdir -p ./cpp-libraries
-	cd ./cpp-libraries; test -e ./SpinalCoreQT || wget http://resources.spinalcom.com/SpinalCoreQT.zip; unzip ./SpinalCoreQT.zip -d ./SpinalCoreQT;
 	
 	# organs
 	mkdir -p ./organs
@@ -157,7 +156,7 @@ neworgan.node:
 	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-node.git; cd neworgan-node/; make update; cd ../; if [[ $${NAME} ]]; then mv neworgan-node $${NAME}; fi 
 
 neworgan.qt:
-	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-qt.git; cd neworgan-qt/; wget http://resources.spinalcom.com/SpinalCoreQT.zip; unzip ./SpinalCoreQT.zip -d ./SpinalCoreQT; rm -r SpinalCoreQT.zip; cd ../; if [[ $${NAME} ]]; then mv neworgan-qt $${NAME}; fi 
+	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-qt.git; cd neworgan-qt; make update; cd ../; if [[ $${NAME} ]]; then mv neworgan-qt $${NAME}; fi 
 
 neworgan.nwjs:
 	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-nwjs.git; cd neworgan-nwjs/; make update; cd ../; if [[ $${NAME} ]]; then mv neworgan-nwjs $${NAME}; fi
