@@ -162,6 +162,9 @@ neworgan.qt:
 neworgan.nwjs:
 	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-nwjs.git; cd neworgan-nwjs/; make update; cd ../; if [[ $${NAME} ]]; then mv neworgan-nwjs $${NAME}; fi
 
+neworgan.browser:
+	@mkdir -p organs/browser/; cd ./organs/browser/; git clone https://github.com/spinalcom/neworgan-browser.git; if [[ $${NAME} ]]; then mv neworgan-browser $${NAME}; fi 
+	
 #=============================== RUNNING =================================
 run: hub.run organs.run
 
