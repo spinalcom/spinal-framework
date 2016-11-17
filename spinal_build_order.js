@@ -1,6 +1,6 @@
 
 const fs = require('fs');
-const dependencies_filename = '/package.json';
+const dependencies_filename = '/spinal.json';
 const dependencies_output = 'build.order';
 
 var lib_array = [];
