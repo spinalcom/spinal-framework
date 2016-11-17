@@ -15,6 +15,7 @@ function getLibs() {
         filename = file + dependencies_filename;
         content = fs.readFileSync(filename,'utf8');
         lib = JSON.parse(content);
+        lib.name = file;
       } catch(err) {
         lib = {name:file,dependencies:[]};
       }
