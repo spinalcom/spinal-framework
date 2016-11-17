@@ -14,20 +14,21 @@ SHELL = /bin/bash
 # js-libraries/ makefile------------------------------------------------------------------
 
 define JS_LIB_MAKEFILE_TXT
-SUBDIRS := $$(wildcard */.)
+FILE_BUILD_ORDER:=build.order
+SUBDIRS :=`cat $$(FILE_BUILD_ORDER)`
 
 all: install global
 
 install:
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir"/."; fi done
-	
+
 global: global-models global-processes
 
-global-models:
+global-models: build-order
 	echo "" > all.models.js;
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then cat $$$$dir/models.js >> all.models.js; fi done
 
-global-processes:
+global-processes: build-order
 	echo "" > all.processes.js;
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then cat $$$$dir/processes.js >> all.processes.js; fi done
 
@@ -35,7 +36,12 @@ clean:
 	rm -f all.processes.js all.models.js;
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir clean; fi done
 
-.PHONY: install global global-processes global-models clean
+build-order:
+	echo "Creating build.order file"
+	@! test -e "spinal_build_order.js" || nodejs spinal_build_order.js
+
+
+.PHONY: install global global-processes global-models clean build-order
 endef
 
 export JS_LIB_MAKEFILE_TXT
@@ -59,7 +65,7 @@ stop:
 
 clean:
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir clean; fi done
-	
+
 .PHONY: all run stop clean
 endef
 
@@ -80,7 +86,7 @@ all:
 clean:
 	for file in $$(HTML); do $$(RM) $$$$file; done
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir clean; fi done
-	
+
 .PHONY: all run stop clean
 endef
 
@@ -102,18 +108,19 @@ install:
 init:
 	# nerve-center
 	mkdir -p ./nerve-center 
-	
+
 	# js-libraries folder
 	mkdir -p ./js-libraries
 	@echo ${JS_LIB_MAKEFILE} > ./js-libraries/Makefile
-	
+	@cp spinal_build_order.js js-libraries/
+
 	# cpp-libraries folder
 	mkdir -p ./cpp-libraries
-	
+
 	# organs
 	mkdir -p ./organs
 	@echo ${ORGAN_MAKEFILE} > ./organs/Makefile
-	
+
 	# organs/browser
 	mkdir -p ./organs/browser
 	mkdir -p ./organs/browser/libJS
@@ -128,20 +135,20 @@ init:
 install-utility_issim: 
 	# lib_is-sim
 	test -e ./js-libraries/lib_is-sim/ && ( cd js-libraries/lib_is-sim/; git pull; ) || ( cd js-libraries/; git clone https://github.com/spinalcom/lib_is-sim.git; );
-	
+
 	# utility_is-sim
 	test -e ./organs/browser/utility_is-sim/ && ( cd ./organs/browser/utility_is-sim/; git pull; ) || ( cd organs/browser/; git clone https://github.com/spinalcom/utility_is-sim.git; );
-	
+
 	# LibJS
 	test -e ./organs/browser/libJS/jquery-2.2.4.min.js || ( cd ./organs/browser/libJS/; wget https://code.jquery.com/jquery-2.2.4.min.js );
 	test -e ./organs/browser/libJS/js.cookie.js || ( cd ./organs/browser/libJS/; wget https://raw.githubusercontent.com/js-cookie/js-cookie/v2.1.1/src/js.cookie.js );
 
 	@echo -e "\n utility_is-sim installation succeeded!\n"
-	
+
 install-utility_admin: 
 	# lib_is-sim
 	test -e ./js-libraries/lib_is-sim/ && ( cd js-libraries/lib_is-sim/; git pull; ) || ( cd js-libraries/; git clone https://github.com/spinalcom/lib_is-sim.git; );
-	
+
 	# utility_is-sim
 	test -e ./organs/utility_admin-dashboard/ && ( cd ./organs/utility_admin-dashboard/; git pull; ) || ( cd organs/; git clone https://github.com/spinalcom/utility_admin-dashboard.git; );
 
@@ -150,7 +157,7 @@ install-utility_admin:
 clean:
 	@cd ./js-libraries; make clean; cd ../organs/; make clean;
 
-	
+
 #============================== NEW ORGANS ===============================
 neworgan.node:
 	@mkdir -p organs/; cd ./organs/; git clone https://github.com/spinalcom/neworgan-node.git; cd neworgan-node/; make update; cd ../; if [[ $${NAME} ]]; then mv neworgan-node $${NAME}; fi 
@@ -163,7 +170,7 @@ neworgan.nwjs:
 
 neworgan.browser:
 	@mkdir -p organs/browser/; cd ./organs/browser/; git clone https://github.com/spinalcom/neworgan-browser.git; if [[ $${NAME} ]]; then mv neworgan-browser $${NAME}; fi 
-	
+
 #=============================== RUNNING =================================
 run: hub.run organs.run
 
@@ -185,5 +192,3 @@ organs.stop:
 
 
 .PHONY: all install update clean run hub.run organs.run stop hub.stop organs.stop 
-	
-	
