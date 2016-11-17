@@ -19,7 +19,7 @@ SUBDIRS :=`cat $$(FILE_BUILD_ORDER)`
 
 all: install global
 
-install:
+install: build-order
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir"/."; fi done
 
 global: global-models global-processes
