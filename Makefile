@@ -150,11 +150,10 @@ install-utility_issim:
 	@echo -e "\n utility_is-sim installation succeeded!\n"
 
 install-utility_admin: 
-	# lib_is-sim
-	test -e ./js-libraries/lib_is-sim/ && ( cd js-libraries/lib_is-sim/; git pull; ) || ( cd js-libraries/; git clone https://github.com/spinalcom/lib_is-sim.git; );
-
+	# LibJS
+	test -e ./organs/browser/libJS/js.cookie.js || ( cd ./organs/browser/libJS/; wget https://raw.githubusercontent.com/js-cookie/js-cookie/v2.1.1/src/js.cookie.js );
 	# utility_is-sim
-	test -e ./organs/utility_admin-dashboard/ && ( cd ./organs/utility_admin-dashboard/; git pull; ) || ( cd organs/; git clone https://github.com/spinalcom/utility_admin-dashboard.git; );
+	test -e ./organs/browser/utility_admin-dashboard/ && ( cd ./organs/browser/utility_admin-dashboard/; git pull; ) || ( cd organs/browser; git clone https://github.com/spinalcom/utility_admin-dashboard.git; );
 
 	@echo -e "\n utility_admin_dashboard installation succeeded!\n"
 
