@@ -25,15 +25,35 @@ At this moment, you have two options: installing the basic framework, and instal
 
 To install the basic framework:
 ```bash
-~/path/to/your-system$ make install
-```
-Or just:
-```bash
+~/path/to/your-system$ make init
 ~/path/to/your-system$ make
 ```
 To install the framework containing the is-sim library:
 ```bash
 ~/path/to/your-system$ make install-issim
+```
+
+### Libraries dependencies
+For each libraries an dependencies can be added in the file : "spinal.json".
+It's important de specify the dependencies to order to specify the build order.
+```
+{
+  "name": "library name",
+  "dependencies": {
+    "dependencies name":"version",
+    ...
+  }
+}
+```
+
+# exemple for the lib_smart-building:
+```
+{
+  "name": "lib_smart-building",
+  "dependencies": {
+    "lib_is-sim":"^1.0.0"
+  }
+}
 ```
 
 ## Run

@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 
 const fs = require('fs');
 const dependencies_filename = '/spinal.json';
