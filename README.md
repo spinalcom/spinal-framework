@@ -33,8 +33,8 @@ To install the framework containing the is-sim library:
 ~/path/to/your-system$ make install-issim
 ```
 
-### Libraries dependencies
-For each libraries an dependencies can be added in the file : "spinal.json".
+### Javascript Libraries dependencies
+For each libraries an dependencies can be added in the file : "js-libraries/<lib name>/spinal.json".
 It's important de specify the dependencies to order to specify the build order.
 ```
 {
