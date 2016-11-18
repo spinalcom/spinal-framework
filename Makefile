@@ -20,17 +20,21 @@ SUBDIRS :=`cat $$(FILE_BUILD_ORDER)`
 all: install global
 
 install: build-order
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir"/."; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir"/."; fi done
 
-global: global-models global-processes
+global: global-is-sim global-models global-processes
 
 global-models: build-order
 	echo "" > all.models.js;
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then cat $$$$dir/models.js >> all.models.js; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/models.js ]; then cat $$$$dir/models.js >> all.models.js; fi done
 
 global-processes: build-order
 	echo "" > all.processes.js;
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then cat $$$$dir/processes.js >> all.processes.js; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/processes.js ]; then cat $$$$dir/processes.js >> all.processes.js; fi done
+
+global-is-sim: build-order
+	echo "" > all.is-sim.js
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then if [ -e $$$$dir/is-sim.js ]; then cat $$$$dir/is-sim.js >> all.is-sim.js; else if [ -e $$$$dir/models.js ]; then cat $$$$dir/models.js >> all.is-sim.js; fi; if [ -e $$$$dir/processes.js ]; then cat $$$$dir/processes.js >> all.is-sim.js; fi fi fi done
 
 clean:
 	rm -f all.processes.js all.models.js;
@@ -55,16 +59,16 @@ define ORGAN_MAKEFILE_TXT
 SUBDIRS := $$(wildcard *)
 
 all:
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir"/."; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir"/."; fi done
 
 run:
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir run; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir run; fi done
 
 stop:
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir stop; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir stop; fi done
 
 clean:
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir clean; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir clean; fi done
 
 .PHONY: all run stop clean
 endef
@@ -81,11 +85,11 @@ SUBDIRS := $$(wildcard *)
 HTML := $$(wildcard *.html)
 
 all:
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir"/."; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir"/."; fi done
 
 clean:
 	for file in $$(HTML); do $$(RM) $$$$file; done
-	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ]; then $$(MAKE) -C $$$$dir clean; fi done
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir clean; fi done
 
 .PHONY: all run stop clean
 endef
