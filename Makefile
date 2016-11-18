@@ -61,6 +61,9 @@ SUBDIRS := $$(wildcard *)
 all:
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir"/."; fi done
 
+init:
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir"/." init; fi done
+
 run:
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir run; fi done
 
@@ -70,7 +73,7 @@ stop:
 clean:
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir clean; fi done
 
-.PHONY: all run stop clean
+.PHONY: all run stop clean init
 endef
 
 export ORGAN_MAKEFILE_TXT
@@ -87,11 +90,14 @@ HTML := $$(wildcard *.html)
 all:
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir"/."; fi done
 
+init:
+	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir"/." init; fi done
+
 clean:
 	for file in $$(HTML); do $$(RM) $$$$file; done
 	for dir in $$(SUBDIRS); do if [ ! -L $$$$dir ] && [ -d $$$$dir ] && [ -e $$$$dir/Makefile ]; then $$(MAKE) -C $$$$dir clean; fi done
 
-.PHONY: all run stop clean
+.PHONY: all run stop clean init
 endef
 
 export ORGAN_BROWSER_MAKEFILE_TXT
@@ -134,6 +140,9 @@ init:
 	# generate symlink of libraries in organs
 	ln -sf ../js-libraries ./organs/
 	ln -sf ../js-libraries ./organs/browser/
+
+	# make init the organs
+	$(MAKE) -C organs init
 	@echo -e "\n Framework installation succeeded!\n"
 
 install-utility_issim: 
