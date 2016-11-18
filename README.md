@@ -46,7 +46,7 @@ It's important de specify the dependencies to order to specify the build order.
 }
 ```
 
-# exemple for the lib_smart-building:
+exemple for the lib_smart-building:
 ```
 {
   "name": "lib_smart-building",
