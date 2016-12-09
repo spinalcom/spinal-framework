@@ -205,6 +205,11 @@ endif
 	@test -e ./organs/browser/utility_admin-dashboard/ && ( cd ./organs/browser/utility_admin-dashboard/; git pull; ) || ( cd organs/browser; git clone https://github.com/spinalcom/utility_admin-dashboard.git; );
 	@echo -e "\033[0;32m\n[OK] make install-utility_admin: Done\n\n\033[0;36mutility_admin_dashboard installation succeeded!\n\033[m"
 
+install-lib_smart-building: test_wget_curl
+	@# utility_is-sim
+	@test -e ./js-libraries/lib_smart-building && ( cd ./js-libraries/lib_smart-building; git pull; ) || ( cd ./js-libraries; git clone https://github.com/spinalcom/lib_smart-building.git; );
+	@echo -e "\033[0;32m\n[OK] make install-lib_smart-building: Done\n\n\033[0;36mlib_smart-building installation succeeded!\n\033[m"
+
 clean: test_init
 	@cd ./js-libraries; $(MAKE) --no-print-directory clean; cd ../organs/; $(MAKE) --no-print-directory clean;
 	@echo -e "\033[0;32m[OK] make clean: Done\033[m"
