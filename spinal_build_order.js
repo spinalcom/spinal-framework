@@ -65,16 +65,14 @@ function orderByDepend(res) {
 function writeFileOrder(buff) {
   fs.writeFile(dependencies_output, buff, 'utf8', (err) => {
     if (err) {
-      console.log("Error writeFile build.order : " + err);
-    } else {
-      console.log("File " + dependencies_output + " created.");
+      console.log("\033[0;31m[Error] writeFile build.order : " + err + "\033[m");
     }
   });
 }
 
 function main() {
   getLibs();
-  if (lib_array.length === 0) return;
+  if (lib_array.length === 0) return writeFileOrder("");
 
   var res = init_res();
   orderByDepend(res);
