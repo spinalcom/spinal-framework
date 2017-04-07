@@ -191,7 +191,7 @@ hub.run:
 	@cd nerve-center; ps ax | grep -v grep | grep -v grep | grep "./${HUB} -b ../${WEB} -p ${JS_PORT} -P ${MONITOR_PORT} -q ${CPP_PORT}" > /dev/null && ( echo -e "\nYour hub is already running!\n" ) || (./${HUB} -b ../${WEB} -p ${JS_PORT} -P ${MONITOR_PORT} -q ${CPP_PORT} & )
 
 organs.run:
-	@cd nerve-center; ps ax | grep -v grep | grep -v grep | grep "./${HUB} -b ../${WEB} -p ${JS_PORT} -P ${MONITOR_PORT} -q ${CPP_PORT}" > /dev/null && ( echo -e "\nRunning organs...\n"; sleep 3; cd ../organs/; make run ) || ( echo -e "\nYou hub is not running!\n" )
+	@cd nerve-center; ps ax | grep -v grep | grep -v grep | grep "./${HUB} -b ../${WEB} -p ${JS_PORT} -P ${MONITOR_PORT} -q ${CPP_PORT}" > /dev/null && ( echo -e "\nRunning organs...\n"; sleep 3; cd ../organs/ && make run ) || ( echo -e "\nYour organs is not running!\nDid you do a make init?\n" )
 
 #=============================== STOPPING ================================
 stop: hub.stop organs.stop
