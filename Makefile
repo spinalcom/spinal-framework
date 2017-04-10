@@ -145,7 +145,7 @@ init:
 	$(MAKE) -C organs init
 	@echo -e "\n Framework installation succeeded!\n"
 
-install-utility_issim: 
+install-utility_issim: init
 	# lib_is-sim
 	test -e ./js-libraries/lib_is-sim/ && ( cd js-libraries/lib_is-sim/; git pull; ) || ( cd js-libraries/; git clone https://github.com/spinalcom/lib_is-sim.git; );
 
@@ -158,7 +158,7 @@ install-utility_issim:
 
 	@echo -e "\n utility_is-sim installation succeeded!\n"
 
-install-utility_admin: 
+install-utility_admin: init
 	# LibJS
 	test -e ./organs/browser/libJS/js.cookie.js || ( cd ./organs/browser/libJS/; wget https://raw.githubusercontent.com/js-cookie/js-cookie/v2.1.1/src/js.cookie.js );
 	# utility_is-sim
